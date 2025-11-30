@@ -22,12 +22,12 @@ jobs:
         pip install requests
 
     - name: Run test.py (deve aprovar)
-      working-directory: ./backend/tests
+      working-directory: ./p3_alvaro/backend/tests
       run: |
         python3 test.py
 
     - name: Run test2.py (pode reprovar sem falhar CI)
-      working-directory: ./backend/tests
+      working-directory: ./p3_alvaro/backend/tests
       run: |
         python3 test2.py || true
 
@@ -35,4 +35,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-results
-        path: ./p3_alvaro/backend/*.txt
+        path: ./p3_alvaro/backend/tests/*.txt

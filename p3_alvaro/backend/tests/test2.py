@@ -3,7 +3,7 @@ import requests
 
 class ClientTest(unittest.TestCase):
     def setUp(self):
-        self.url = "http://127.0.0.1:5500/frontend/login123.html"
+        self.url = "http://127.0.0.1:5500/login123.html"
         self.requestr = []
 
     def test_clientLogin(self):

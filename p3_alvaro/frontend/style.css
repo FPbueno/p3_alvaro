@@ -21,10 +21,15 @@ body:not(.kanban-page) {
   align-items: center;
   min-height: 100vh;
   padding: 20px;
+  background-image: url("./images/background1.jpg");
+  background-size: cover;        /* cobre toda a tela */
+  background-position: center;   /* centralizada */
+  background-repeat: no-repeat;  /* evita repetição */
+  background-attachment: fixed;  /* efeito parallax leve (opcional) */
 }
 
 .container {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.50);
   padding: 40px 30px;
   border-radius: 12px; /* Cantos mais suaves */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra mais profunda e suave */
@@ -86,14 +91,14 @@ button {
 #registerBtn,
 #loginBtn,
 #addBtn {
-  background-color: #3498db;
+  background-color: #34db5e;
   color: white;
 }
 
 #registerBtn:hover,
 #loginBtn:hover,
 #addBtn:hover {
-  background-color: #2980b9;
+  background-color: rgb(77, 240, 99);
   transform: translateY(-2px); /* Efeito mais visível */
   box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);
 }
@@ -563,3 +568,14 @@ body.kanban-page {
   transform: scale(1.15);
 }
 
+.container img {
+  height: 100px; /* Tamanho do logo */
+  width: 100px;
+}
+
+.logo-lr {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}

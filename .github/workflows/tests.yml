@@ -21,12 +21,18 @@ jobs:
       run: |
         pip install requests
 
+    - name: Start HTTP server for frontend
+      working-directory: ./p3_alvaro/frontend
+      run: |
+        python3 -m http.server 5500 &
+        sleep 3    # aguarda servidor subir
+
     - name: Run test.py (deve aprovar)
       working-directory: ./p3_alvaro/backend/tests
       run: |
         python3 test.py
 
-    - name: Run test2.py (pode reprovar sem falhar CI)
+    - name: Run test2.py (pode reprovar sem falhar o workflow)
       working-directory: ./p3_alvaro/backend/tests
       run: |
         python3 test2.py || true

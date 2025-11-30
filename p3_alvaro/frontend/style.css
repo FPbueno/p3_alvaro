@@ -1,0 +1,565 @@
+/* ========== RESET GLOBAL ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Fonte ligeiramente ajustada e fundo mais claro */
+  font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+  background: #f4f7f6; /* Fundo cinza suave */
+  color: #2c3e50; /* Cor de texto mais escura e moderna */
+  line-height: 1.6;
+}
+
+/* ========== FORMULÁRIOS: LOGIN / REGISTRO ========== */
+
+body:not(.kanban-page) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px; /* Cantos mais suaves */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra mais profunda e suave */
+  width: 100%;
+  max-width: 450px; /* Levemente mais largo para login/registro */
+  transition: all 0.3s ease;
+}
+
+h1 {
+  text-align: center;
+  color: #3498db; /* Azul mais vibrante */
+  margin-bottom: 30px; /* Mais espaço */
+  font-size: 28px;
+}
+
+/* Inputs e selects */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 14px 18px; /* Mais padding */
+  margin-bottom: 20px;
+  border: 1px solid #dcdcdc; /* Borda mais clara */
+  border-radius: 8px; /* Cantos mais suaves */
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+/* Label */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #34495e;
+  font-weight: 600; /* Mais destaque */
+}
+
+/* Botões gerais */
+button {
+  width: 100%;
+  padding: 14px; /* Mais padding */
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#registerBtn,
+#loginBtn,
+#addBtn {
+  background-color: #3498db;
+  color: white;
+}
+
+#registerBtn:hover,
+#loginBtn:hover,
+#addBtn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px); /* Efeito mais visível */
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);
+}
+
+#goRegisterBtn,
+#goLoginBtn {
+  background-color: #ecf0f1;
+  color: #34495e;
+}
+
+#goRegisterBtn:hover,
+#goLoginBtn:hover {
+  background-color: #bdc3c7;
+  transform: translateY(-1px);
+}
+
+/* ========== KANBAN PAGE ========== */
+
+body.kanban-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  background-image: url("./images/background1.jpg");
+  background-size: cover;        /* cobre toda a tela */
+  background-position: center;   /* centralizada */
+  background-repeat: no-repeat;  /* evita repetição */
+  background-attachment: fixed;  /* efeito parallax leve (opcional) */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, rgb(10, 35, 80), rgb(0, 0, 0));
+  color: white;
+  padding: 18px 40px; /* Mais padding */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.navbar h1 {
+  font-size: 22px;
+  margin: 0;
+  color: white;
+}
+
+.navbar img {
+  height: 40px; /* Tamanho do logo */
+  width: 40px;
+  margin-right: 15px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.navbar .logout-group {
+    display: flex; 
+    align-items: center;
+    margin-left: auto; 
+}
+
+#logoutBtn {
+  width: auto; 
+  padding: 8px 16px; 
+  margin: 0; 
+  background-color: #e74c3c; 
+  color: white;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+#logoutBtn:hover {
+  background-color: #c0392b;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Conteúdo principal do Kanban */
+.main-board {
+  flex: 1;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Formulário nova tarefa */
+.new-task-form {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.new-task-form input,
+.new-task-form button {
+  height: 45px;            /* Mesma altura para ambos */
+  padding: 0 15px;         /* Mantém espaçamento interno */
+  font-size: 16px;         /* Tamanho da fonte igual */
+  border-radius: 8px;      /* Deixa mais bonito */
+  border: 1px solid #ccc;  /* Bordas iguais */
+  box-sizing: border-box;  /* Garante que altura não estoure */
+}
+
+.new-task-form button {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.new-task-form button:hover {
+  background-color: #1877cc;
+}
+
+#newTask {
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+#addBtn {
+  flex: 0 0 150px; 
+  margin-bottom: 0; 
+}
+
+/* Quadro Kanban */
+.kanban-board {
+  display: flex;
+  gap: 25px; 
+  flex-grow: 1;
+  /* CORREÇÃO AQUI: Alinhamento centralizado quando há espaço */
+  justify-content: center;
+  
+  overflow-x: auto; 
+  overflow-y: hidden; 
+  padding-bottom: 10px;
+}
+
+.kanban-column {
+  flex: 0 0 320px; 
+  min-width: 320px;
+  background: #ffffff; 
+  padding: 20px; 
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.kanban-column h2 {
+  font-size: 19px;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #34495e; 
+  border-bottom: 2px solid #bdc3c7; 
+}
+/* Destaque visual nos títulos das colunas */
+#todoListTitle { border-bottom-color: #3498db; } /* Azul */
+#inProgressListTitle { border-bottom-color: #f39c12; } /* Amarelo/Laranja */
+#doneListTitle { border-bottom-color: #27ae60; } /* Verde */
+
+
+/* Lista de tarefas */
+.task-list {
+  flex: 1;
+  overflow-y: auto; 
+  list-style: none;
+  padding: 0;
+  min-height: 50px;
+}
+
+.task-list li {
+  background: white;
+  padding: 15px 18px; 
+  margin-bottom: 15px;
+  border-left: 6px solid #3498db; /* Default: Todo (Azul) */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  transition: all 0.2s ease;
+  word-break: break-word;
+  font-size: 15px;
+}
+
+.task-list li:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Regra para Tarefa em Progresso (Cor Laranja) */
+.task-list li.in-progress {
+  border-left-color: #f39c12; 
+  background: #fefcf5;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+/* Regra para Tarefa Concluída (Cor Verde) */
+.task-list li.done {
+  text-decoration: line-through;
+  color: #95a5a6; 
+  border-left-color: #27ae60; 
+  opacity: 0.9;
+  background: #f6fff9;
+}
+
+.task-list li button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #e74c3c;
+  cursor: pointer;
+  width: auto;
+  padding: 0 5px;
+  margin: 0;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.task-list li button:hover {
+  color: #c0392b;
+}
+
+/* ========== RESPONSIVO ========== */
+
+@media (max-width: 992px) { 
+    .kanban-column {
+        flex: 0 0 280px;
+        min-width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+    flex-direction: row; 
+    align-items: flex-start;
+    flex-wrap: wrap; 
+  }
+
+  .navbar h1 {
+    flex-basis: 70%; 
+  }
+  
+  .navbar .logout-group {
+    flex-basis: 30%; 
+    justify-content: flex-end; 
+  }
+  
+  .main-board {
+    padding: 20px;
+  }
+  
+  .kanban-board {
+    /* CORREÇÃO AQUI: Em telas pequenas, volta a ser uma coluna única e alinhada à esquerda */
+    flex-direction: column;
+    justify-content: flex-start; 
+    height: auto; 
+    overflow-x: hidden; 
+    overflow-y: auto;
+  }
+
+  .kanban-column {
+    flex: none; 
+    width: 100%; 
+    margin-bottom: 20px;
+    height: auto;
+  }
+  
+  .new-task-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #addBtn {
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 30px 20px;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 15px;
+  }
+}
+
+/* ==========================
+   🗂 FORMULÁRIO DE NOVA TAREFA
+========================== */
+.new-task-form input,
+.new-task-form button {
+  height: 45px;
+  padding: 0 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  box-sizing: border-box;
+}
+
+.new-task-form input {
+  flex: 1;
+  background: #f5f7fa;
+  border: 1px solid #d0d7de;
+  color: #2c3e50;
+  transition: 0.2s;
+}
+
+.new-task-form input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52,152,219,0.4);
+}
+
+.new-task-form button {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.new-task-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(52,152,219,0.35);
+}
+
+
+/* ==========================
+   📌 KANBAN BOARD
+========================== */
+.kanban-board {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  padding: 20px 0;
+  overflow-x: auto;
+}
+
+/* Responsivo */
+@media (max-width: 800px) {
+  .kanban-board {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+
+/* ==========================
+   📦 COLUNAS
+========================== */
+.kanban-column {
+  flex: 0 0 330px;
+  min-width: 330px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: transform 0.2s ease;
+}
+
+.kanban-column:hover {
+  transform: translateY(-4px);
+}
+
+.kanban-column h2 {
+  font-size: 19px;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.60);
+  text-transform: uppercase;
+  border-bottom: 2px solid rgba(255,255,255,0.25);
+}
+
+
+/* ==========================
+   📝 LISTA DE TAREFAS
+========================== */
+.task-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* ==========================
+   🎯 TAREFAS
+========================== */
+.task-list li {
+  background: #ffffff;
+  padding: 15px 18px;
+  margin-bottom: 16px;
+  border-left: 6px solid #3498db;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  transition: 0.2s ease;
+  word-break: break-word;
+  font-size: 15px;
+}
+
+.task-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* Estado: Em Progresso */
+.task-list li.in-progress {
+  border-left-color: #f39c12;
+  background: #fff8e8;
+  color: #8e5b00;
+}
+
+/* Estado: Concluído */
+.task-list li.done {
+  border-left-color: #27ae60;
+  background: #f2fff5;
+  color: #7d7d7d;
+  text-decoration: line-through;
+  opacity: 0.85;
+}
+
+
+/* ==========================
+   ❌ BOTÃO DE EXCLUIR
+========================== */
+.task-list li button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #e74c3c;
+  cursor: pointer;
+  padding: 0 5px;
+  transition: 0.2s;
+}
+
+.task-list li button:hover {
+  color: #c0392b;
+  transform: scale(1.15);
+}
+

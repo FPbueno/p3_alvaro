@@ -1,9 +1,9 @@
 import express from 'express';
-import pool from '../db'; // sua conexão com o banco
+import Database from '../db'; // sua conexão com o banco
 import { authenticateToken } from '../middleware/authMiddleware';
 
 const router = express.Router();
-
+const pool = Database.getInstance();
 // ✅ GET - Buscar todos os todos do usuário
 router.get('/', authenticateToken, async (req: any, res) => {
   try {

@@ -1,9 +1,10 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import pool from '../db';
+import Database from '../db';
 
 const router = express.Router();
+const pool = Database.getInstance();
 
 // Registro com role (default: 'visualizacao')
 router.post('/register', async (req, res) => {
